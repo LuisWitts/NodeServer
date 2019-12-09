@@ -1,0 +1,22 @@
+<html>
+    <script>
+       function recuperar(){
+           console.log("to aqui");
+           fetch("http://localhost:3000/funcionarios",{"method":"GET"})
+               .then(response => response.json())
+               .then(json => exibe(json));
+       }
+       function exibe(json){
+           var func;
+           for (i=0; i<json.length; i++){
+               func = json[i];
+               document.getElementById("resultado").innerHTML += func.nome+"  (R$ "+func.salario+") <br/>";
+           }
+       }
+    </script>
+<body>
+
+   <button onclick="recuperar()"> Recuperar Dados </button>
+   <div id="resultado"></div>
+</body>
+</html>
